@@ -10,10 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.liuchao</groupId>
-    <artifactId>javaAgent</artifactId>
+    <artifactId>java-runtime-agent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
-    <name>javaAgent</name>
     <description>java Agent project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
