@@ -69,43 +69,22 @@ Can-Redefine-Classes: true
 Can-Retransform-Classes: true
 ```
 
-
 告示文件MANIFEST.MF参数说明：
-
 * Manifest-Version 文件版本
-
-
 * Premain-Class 包含 premain 方法的类（类的全路径名）main方法运行前代理
-
-
-Agent-Class
-包含 agentmain 方法的类（类的全路径名）main开始后可以修改类结构
-
-
-Boot-Class-Path
-设置引导类加载器搜索的路径列表。查找类的特定于平台的机制失败后，引导类加载器会搜索这些路径。按列出的顺序搜索路径。列表中的路径由一个或多个空格分开。（可选）
-
-
-Can-Redefine-Classes true
-表示能重定义此代理所需的类，默认值为 false（可选）
-
-
-Can-Retransform-Classes true
-表示能重转换此代理所需的类，默认值为 false （可选）
-
-
-Can-Set-Native-Method-Prefix true
-表示能设置此代理所需的本机方法前缀，默认值为 false（可选）
-
-
+* Agent-Class 包含 agentmain 方法的类（类的全路径名）main开始后可以修改类结构
+* Boot-Class-Path 设置引导类加载器搜索的路径列表。查找类的特定于平台的机制失败后，引导类加载器会搜索这些路径。按列出的顺序搜索路径。列表中的路径由一个或多个空格分开。（可选）
+* Can-Redefine-Classes true 表示能重定义此代理所需的类，默认值为 false（可选）
+* Can-Retransform-Classes true 表示能重转换此代理所需的类，默认值为 false （可选）
+* Can-Set-Native-Method-Prefix true 表示能设置此代理所需的本机方法前缀，默认值为 false（可选）
 ...
 
 
-最后通过Maven生成Agent的jar包，然后修改测试目标程序的启动器，添加JVM参数即可
-参数示例：-javaagent:/Users/liuchao58/liuchao/IdeaWorkspace/java-runtime-agent/runtime-agent/target/java-runtime-agent-1.0.1-SNAPSHOT.jar=helloworld
+3. 最后通过Maven生成Agent的jar包，然后修改测试目标程序的启动器，添加JVM参数即可
+参数示例：
+`-javaagent:/Users/liuchao58/liuchao/IdeaWorkspace/java-runtime-agent/runtime-agent/target/java-runtime-agent-1.0.1-SNAPSHOT.jar=helloworld`
 <img width="1106" alt="image" src="https://user-images.githubusercontent.com/34876517/189300879-d6861147-5fc4-4ab1-b92f-8e86a47dcb9e.png">
 
-最终执行com.liuchao.main.AppMain#main效果：
+4. 最终执行com.liuchao.main.AppMain#main效果：
 <img width="1164" alt="image" src="https://user-images.githubusercontent.com/34876517/189301077-45f1ac4d-35ba-44c8-9862-0d8d598fb178.png">
-
 
