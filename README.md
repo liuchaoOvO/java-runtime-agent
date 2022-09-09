@@ -32,9 +32,11 @@ JVMTI是实现 Debugger、Profiler、Monitor、Thread Analyser 等工具的统�
 
 * JVMTIAgent是一个动态库，利用JVMTI暴露出来的一些接口来干一些我们想做、但是正常情况下又做不到的事情，不过为了和普通的动态库进行区分，它一般会实现如下的一个或者多个函数：
 
+```
 **Agent_OnLoad函数，如果agent是在启动时加载的，通过JVM参数设置** <br/>
 **Agent_OnAttach函数，如果agent不是在启动时加载的，而是我们先attach到目标进程上，然后给对应的目标进程发送load命令来加载，则在加载过程中会调用Agent_OnAttach函数** <br/>
 **Agent_OnUnload函数，在agent卸载时调用** <br/>
+```
 
 * javaagent 依赖于instrument的JVMTIAgent（Linux下对应的动态库是libinstrument.so），还有个别名叫JPLISAgent(Java Programming Language Instrumentation Services Agent)，专门为Java语言编写的插桩服务提供支持的
 
@@ -84,7 +86,7 @@ Can-Retransform-Classes: true
 3. 最后通过Maven生成Agent的jar包，然后修改测试目标程序的启动器，添加JVM参数即可
 参数示例：<br/>
 `-javaagent:/Users/liuchao58/liuchao/IdeaWorkspace/java-runtime-agent/runtime-agent/target/runtime-agent-1.0.1-SNAPSHOT.jar=helloworld`
-<img width="1106" alt="image" src="https://user-images.githubusercontent.com/34876517/189300879-d6861147-5fc4-4ab1-b92f-8e86a47dcb9e.png">
+<img width="1246" alt="image" src="https://user-images.githubusercontent.com/34876517/189379770-360197a5-99aa-4ffb-ae6c-06c6d92314dc.png">
 
 4. 最终执行com.liuchao.main.AppMain#main效果：
 <img width="1164" alt="image" src="https://user-images.githubusercontent.com/34876517/189301077-45f1ac4d-35ba-44c8-9862-0d8d598fb178.png">
